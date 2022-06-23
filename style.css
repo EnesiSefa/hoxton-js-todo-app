@@ -79,24 +79,23 @@ body {
     place-content: center;
   }
   
-  .todo-list{
+  .todo-lists{
     display: grid;
-    gap: 10px;
     
   }
   .todo-item{
     align-items: center;
     display: grid;
-    grid-template-columns: auto 0.1fr;
+    grid-template-columns: 0.2fr auto  0.1fr;
   }
 
-  .completed-list{
+  .completed-lists{
     display: grid;
-    gap: 10px;
+    
   }
   
   .completed-item{
     align-items: center;
     display: grid;
-    grid-template-columns: auto 0.1fr;
+    grid-template-columns: 0.2fr auto  0.1fr;
   }
