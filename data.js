@@ -10,5 +10,6 @@ const state = {
             Text: "Watch movies", 
         completed: true
     }
-    ]
+    ],
+    showCompleted : true
 }
