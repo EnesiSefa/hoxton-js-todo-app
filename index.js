@@ -92,19 +92,6 @@ function render (){
 render()
 
 
-function addTodo(text) {
-    if (text.length === 0) return
-  let liEl = document.createElement("li")
-  liEl.className = "todo-item"
-    let todo = {
-      text: text,
-      completed: false,
-    }
-    state.todos.push(todo)
-    render()
-    
-  }
-
 
 
 //       <section class="option-section">
@@ -170,6 +157,16 @@ function renderAddItem(text){
 
     let formAddItemEl = document.createElement("form")
     formAddItemEl.className = "add-item"
+    formAddItemEl.addEventListener("submit",function(event){
+        event.preventDefault()
+        let todo = {
+            text: inputAddItemEl.value,
+            completed: false,
+          }
+         state.todos.push(todo)
+         render()
+        
+    })
 
     let inputAddItemEl = document.createElement("input")
     inputAddItemEl.className ="text-input"
@@ -177,22 +174,14 @@ function renderAddItem(text){
     inputAddItemEl.name = "text"
     inputAddItemEl.required
     inputAddItemEl.minLength = 3
+    
  
     let buttonAddItemEl = document.createElement("button")
     buttonAddItemEl.className = "button-add"
     buttonAddItemEl.type = "submit"
     buttonAddItemEl.textContent = "Add"
-    buttonAddItemEl.addEventListener("click", function(){
-        
-        
-        let todo = {
-            text: text,
-            completed: false,
-          }
-         state.todos.push(todo)
-         render()
-        
-    })
+
+    
 
     addItemEl.append(h2AdditemEl,formAddItemEl)
     formAddItemEl.append(inputAddItemEl,buttonAddItemEl)
@@ -238,7 +227,8 @@ function renderToDo(text){
 
     
 
-    let liToDoEl = document.createElement("li")
+   for(let todo of state.todos)
+   {let liToDoEl = document.createElement("li")
     liToDoEl.className = "todo-item"
     
     let divToDoEl = document.createElement("div")
@@ -252,7 +242,7 @@ function renderToDo(text){
 
     let pToDoEl = document.createElement("p")
     pToDoEl.className = "text"
-    pToDoEl.textContent = "Go shopping"
+    pToDoEl.textContent = todo.text
 
     let divButtonToDoEl = document.createElement("div")
     divButtonToDoEl.className ="button-div"
@@ -261,13 +251,15 @@ function renderToDo(text){
     buttonToDoEl.className = "delete"
     buttonToDoEl.textContent = "Delete"
 
-   
-    todoSectionEl.append(h2ToDoEl,ulToDoEl)
-    ulToDoEl.append(liEl)
+    ulToDoEl.append(liToDoEl)
     liToDoEl.append(divToDoEl,divToDoTextEl,divButtonToDoEl)
     divToDoEl.append(inputToDoEl)
     divToDoTextEl.append(pToDoEl)
     divButtonToDoEl.append(buttonToDoEl)
+}
+
+
+    todoSectionEl.append(h2ToDoEl,ulToDoEl)
 
     let containerEl = document.querySelector("main")
     containerEl?.append(todoSectionEl)

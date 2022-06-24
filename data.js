@@ -1,13 +1,13 @@
 const state = {
   todos :[
-        { Text: "Go shopping", 
+        { text: "Go shopping", 
         completed: false},
         
-        { Text: "Work out", 
+        { text: "Work out", 
         completed: false},
        
         { 
-            Text: "Watch movies", 
+            text: "Watch movies", 
         completed: true
     }
     ],
