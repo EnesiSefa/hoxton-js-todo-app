@@ -33,9 +33,9 @@ body {
   }
   
   button {
-    /* border: none; */
-    /* background: none; */
-    /* color: #000000cc; */
+    /* border: none; 
+     background: none; 
+    color: #000000cc; */
   }
   
   form.add-item {
@@ -81,6 +81,7 @@ body {
   
   .todo-lists{
     display: grid;
+    grid: 200px;
     
   }
   .todo-item{

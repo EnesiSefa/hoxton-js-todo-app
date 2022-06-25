@@ -84,7 +84,6 @@ function render() {
   renderOption();
   renderAddItem();
   renderToDo();
-  renderCompleted()
 }
 render();
 
@@ -105,19 +104,16 @@ function renderOption(text) {
   h2optionEl.textContent = "OPTIONS";
 
  
-  let labelOtptionEl = document.createElement("label");
-  labelOtptionEl.setAttribute("class", "show-completed-checkbox");
-  labelOtptionEl.innerText = "Show completed";
-  let inputOptionEl = document.createElement("input");
-  inputOptionEl.className = "checkbox";
-  inputOptionEl.type = "checkbox";
-  if (state.showCompleted) inputOptionEl.checked = true
-  inputOptionEl.addEventListener('click', function () {
-    toggleShowCompleted()
-    render()
-  })
-  optionSectionEl.append(h2optionEl, labelOtptionEl)
-  labelOtptionEl.append(inputOptionEl);
+  let labelcompletedEl = document.createElement("label");
+  labelcompletedEl.setAttribute("class", "show-completed-checkbox");
+  labelcompletedEl.innerText = "Show completed";
+  let inputcompletedEl = document.createElement("input");
+  inputcompletedEl.className = "checkbox";
+  inputcompletedEl.type = "checkbox";
+  
+  
+  optionSectionEl.append(h2optionEl, labelcompletedEl)
+  labelcompletedEl.appendChild(inputcompletedEl);
 
 
   
@@ -233,22 +229,24 @@ function renderToDo(text) {
     let divButtonToDoEl = document.createElement("div");
     divButtonToDoEl.className = "button-div";
 
-    let buttonToDoEl = document.createElement("button");
-    buttonToDoEl.className = "delete";
-    buttonToDoEl.textContent = "Delete";
-
+    
+    
+   let deleteBtnEl = document.createElement("button");
+    deleteBtnEl.className = "delete";
+    deleteBtnEl.textContent = "X"
+    deleteBtnEl.style.backgroundColor = "red"
+    deleteBtnEl.style.color = "white"
     ulToDoEl.append(liToDoEl);
     liToDoEl.append(divToDoEl, divToDoTextEl, divButtonToDoEl);
     divToDoEl.append(inputToDoEl);
     divToDoTextEl.append(pToDoEl);
-    divButtonToDoEl.append(buttonToDoEl);
+    divButtonToDoEl.append(deleteBtnEl);
   }
 
   todoSectionEl.append(h2ToDoEl, ulToDoEl);
 
   let containerEl = document.querySelector("main");
   containerEl?.append(todoSectionEl);
-  // renderAddItem(text)
 }
 
 //  <section class="completed-section">
@@ -268,67 +266,14 @@ function renderToDo(text) {
 //         </ul>
 //       </section>
 
-function renderCompleted(text) {
-
-   for(let todo of state.todos) {let completedSectionEl = document.createElement("section");
-    completedSectionEl.className = "completed-section";
-
-    let h2El = document.createElement("h2");
-    h2El.className = "completed-title";
-    h2El.textContent = "Completed"
-
-    let ulEl = document.createElement("ul");
-    ulEl.className = "completed-lists";
-
-    let liEl = document.createElement("li");
-    liEl.className = "completed-item";
-
-    let divEl = document.createElement("div");
-    divEl.className = "completed-checkbox-div";
-
-    let inputEl = document.createElement("input")
-    inputEl.className = "class=completed-checkbox"
-    inputEl.type ="checkbox"
 
 
-    let divEl2 = document.createElement("div")
-    divEl2.className = "text-section"
-
-    let pEl = document.createElement("p")
-    pEl.className = "text"
-    pEl.textContent ="see the doctor"
-
-   let divbtnEl = document.createElement("div")
-   divbtnEl.className ="button-section"
-
-   let btnEl = document.createElement("button")
-   btnEl.className = "delete" 
-   btnEl.textContent = "Delete"
-   btnEl.addEventListener("click",  function () {
-    deleteTodo(todo.text)
-    render()
-  })
-   
-   
-    
-
-
-   completedSectionEl.append(h2El,ulEl)
-   ulEl.append(liEl)
-   liEl.append(divEl,divEl2,divbtnEl)
-
-   let containerEl = document.querySelector("main");
-  containerEl?.append(completedSectionEl);
-}
-
- 
-  
-}
-
-
-function deleteTodo(text) {
-  let updatedTodos = state.todos.filter(todo => todo.text !== text)
-  state.todos = updatedTodos
-  let btnEl = document.querySelector("button")
-
-}
+// function deleteTodo(text) {
+//   let updatedTodos = state.todos.filter(todo => todo.text !== text)
+//   state.todos = updatedTodos
+//   let btnEl = document.querySelector("button")
+//   btnEl.addEventListener("click", function(){
+//     if(text.target.className.contains(""))
+//     renderToDo()
+//   })
+// }

@@ -11,5 +11,5 @@ const state = {
         completed: true
     }
     ],
-    showCompleted : true
+    showCompleted : false
 }
